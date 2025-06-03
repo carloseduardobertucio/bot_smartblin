@@ -1,0 +1,16 @@
+{
+  "name": "bot-smartblin",
+  "version": "1.0.0",
+  "description": "Bot WhatsApp para Smart Blin",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "whatsapp-web.js": "^1.21.0",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
