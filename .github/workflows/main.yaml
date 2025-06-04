@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 env:
-  DOCKER_IMAGE: carlosedbertucio/smartblin-bot:tagname
+  DOCKER_IMAGE: carlosedbertucio/smartblin-bot:latest
   DOCKER_TAG: latest
 
 jobs:
@@ -22,14 +22,14 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: carlosedbertucio
-          password: ${{ secrets.DOCKER_PASSWORD }} # Recomendação: use secrets para a senha
+          password: dckr_pat_B0gKMtz0D_gPn7xbaITYeR-xFFk
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
+          tags: ${{ env.DOCKER_IMAGE }}
 
   deploy:
     needs: build-and-push-ci
