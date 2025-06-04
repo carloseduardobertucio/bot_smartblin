@@ -9,7 +9,7 @@ env:
   DOCKER_TAG: latest
 
 jobs:
-  build-and-push(CI):
+  build-and-push-ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -22,7 +22,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: carlosedbertucio
-          password: dckr_pat_B0gKMtz0D_gPn7xbaITYeR-xFFk
+          password: ${{ secrets.DOCKER_PASSWORD }} # Recomendação: use secrets para a senha
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -32,7 +32,7 @@ jobs:
           tags: ${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}
 
   deploy:
-    needs: build-and-push(CI)
+    needs: build-and-push-ci
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to server
@@ -45,4 +45,4 @@ jobs:
             cd /caminho/do/projeto
             docker-compose pull
             docker-compose down
-            docker-compose up -d 
+            docker-compose up -d
