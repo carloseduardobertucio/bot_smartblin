@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  chatbot:
+    build: .
+    container_name: smartblin-chatbot
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/app
+      - /app/node_modules 
