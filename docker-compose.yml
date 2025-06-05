@@ -7,6 +7,9 @@ services:
     restart: unless-stopped
     tty: true
     stdin_open: true
+    privileged: true
+    security_opt:
+      - seccomp=unconfined
     volumes:
       - .:/app
       - /app/node_modules 
