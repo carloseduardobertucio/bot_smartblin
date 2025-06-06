@@ -111,7 +111,7 @@ ENV PUPPETEER_ARGS="--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usag
 USER pptruser
 
 # Expondo a porta (se necessário)
-EXPOSE 3000
+EXPOSE 3005
 
 # Comando para iniciar a aplicação
 CMD ["node", "chatbot.js"] 
