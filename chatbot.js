@@ -1,6 +1,19 @@
 const qrcode = require('qrcode-terminal');
 const { Client } = require('whatsapp-web.js');
-const client = new Client();
+const client = new Client({
+    puppeteer: {
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-accelerated-2d-canvas',
+            '--no-first-run',
+            '--no-zygote',
+            '--disable-gpu'
+        ],
+        headless: true
+    }
+});
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 // Estado por usuário (mapeado pelo número)
